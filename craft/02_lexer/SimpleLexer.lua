@@ -2,6 +2,7 @@
     --用于学习编译原理
     https://time.geekbang.org/column/article/118378
 ]]
+require("framework.init")
 
 local STATE = {
     Initial=0 ,
@@ -183,12 +184,12 @@ function lexer.tokenize( code_str )
             end
         elseif  state == STATE.GE or
                 state ==  STATE.Assignment or
-                state ==  STATE.Plusor or
-                state ==  STATE.Minusor or
-                state ==  STATE.Staror or
-                state ==  STATE.Slashor or
-                state ==  STATE.SemiColonor or
-                state ==  STATE.LeftParenor or
+                state ==  STATE.Plus or
+                state ==  STATE.Minus or
+                state ==  STATE.Star or
+                state ==  STATE.Slash or
+                state ==  STATE.SemiColon or
+                state ==  STATE.LeftParen or
                 state ==  STATE.RightParen then 
 
                 state = lexer.initToken(ch) --退出GT状态，并保存Token
