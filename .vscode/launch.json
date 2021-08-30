@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Debug",
             "program": "${file}",
-            "path": "${workspaceFolder}/craft/?.lua;${workspaceFolder}/?.lua;",
+            "path": "${workspaceFolder}/craft/?.lua;${workspaceFolder}/craft/02_lexer/?.lua;",
             "stopOnEntry": false,
         }
     ]
