@@ -18,3 +18,4 @@ function Token:getText()
     
     return token_type_const[self.type]
 end
+return Token
