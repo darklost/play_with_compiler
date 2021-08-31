@@ -1,2 +1,32 @@
 {
+    "editor.snippetSuggestions": "bottom",
+    "luaide.scriptRoots": [
+        "${workspaceRoot}/craft",
+        "${workspaceRoot}/craft/02_lexer",
+    ],
+    "luaide.openUriConfig": [
+
+        {
+            "name": "百度搜索",
+            "url": "https://www.baidu.com/s?wd={selection}"
+        },
+        {
+            "name": "百度翻译",
+            "url": "http://fanyi.baidu.com/#zh/en/{selection}"
+        }
+    ],
+    
+    "luaide.apiType": "none",
+    "luaide.ignoreDir": [
+        
+    ],
+    "luaide.requireFunNames": [
+        "require",
+        "import"
+    ],
+    "luaide.tagIsShowFileName":true,
+    "luaide.ctorNames": [
+        "ctor"
+    ],
+    "luaide.automaticDownloadingDebugFile": false
 }

@@ -1,2 +1,2 @@
-require("framework.init")
-require("SimpleLexer")
+require "framework.init" 
+require "SimpleLexer" 
