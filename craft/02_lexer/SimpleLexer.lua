@@ -129,13 +129,13 @@ end
 --------------------------
 function SimpleLexer:initToken( ch )
     -- print("initToken ch=",ch,string.char( ch ),self:token.type,self:tokenText)
-    if string.len( self.tokenText) >0 then
+    if string.len( self.tokenText ) >0 then
        
-        self.token.text=self.tokenText
+        self.token.text = self.tokenText
         table.insert( self.tokens, self.token )
         -- print("initToken insert tokens",ch,string.char( ch ),self.token.type,self.token.text)
-        self.tokenText=""
-        self.token= SimpleToken.new()
+        self.tokenText = ""
+        self.token = SimpleToken.new()
     end
     local new_state = DfaState.Initial
     --第一个字符是字母
