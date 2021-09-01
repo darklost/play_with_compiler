@@ -300,10 +300,10 @@ end
 
 
 
-function dump_tokens( tokenReader )
+function dump_tokens( tokens )
     local token = nil
     repeat
-        token = tokenReader:read()
+        token = tokens:read()
         if token then
             print(token:getType(),token_type_const[token:getType()].desc,token:getText())
         end

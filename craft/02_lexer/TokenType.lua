@@ -1,7 +1,7 @@
 local token_type_const = {}
 
-local function add(const)
-    if token_type_const[const.code]  then
+local function add(type_const)
+    if token_type_const[type_const.code]  then
 
         local info = debug.getinfo(2, "Sl")
         local get_src = ""
@@ -9,13 +9,13 @@ local function add(const)
             local short_src = info.short_src
             get_src =  string.format("[%s:%d] ", short_src, info.currentline)
         end
-        local err_info = string.format("%s have the same error code[%d], desc[%s]",get_src, const.code, const.desc)
+        local err_info = string.format("%s have the same error code[%d], desc[%s]",get_src, type_const.code, type_const.desc)
         print(err_info)
         error(err_info)
     end
-    token_type_const[const.code] = const
+    token_type_const[type_const.code] = type_const
 
-    return const.code
+    return type_const.code
 end
 
 TOKEN_TYPE = {
