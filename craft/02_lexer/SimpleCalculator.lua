@@ -10,7 +10,7 @@
 
 local SimpleLexer = require "SimpleLexer"
 local ASTNode = require "ASTNode"
-local SimpleCalculator = class("SimpleCalculator")
+
 
 
 ------------------------
@@ -73,6 +73,8 @@ function SimpleASTNode:addChild(child)
 end
 
 
+
+local SimpleCalculator = class("SimpleCalculator")
 
 function SimpleCalculator:ctor()
     
