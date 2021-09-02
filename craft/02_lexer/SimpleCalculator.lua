@@ -125,9 +125,10 @@ function SimpleCalculator:evaluateASTNode( node,  indent)
                                     end
                     end,
                     [ASTNodeType.Additive]= function()
-                            local  child1 = node:getChildren()[1]
+                            local  children = node:getChildren()
+                            local  child1 = children[1]
                             local  value1 = self:evaluateASTNode(child1, indent .. "\t")
-                            local  child2 = node:getChildren()[2]
+                            local  child2 = children[2]
                             local  value2 = self:evaluateASTNode(child2, indent .. "\t")
                             if node:getText() == "+" then 
                                 result = value1 + value2
@@ -136,9 +137,10 @@ function SimpleCalculator:evaluateASTNode( node,  indent)
                             end
                     end,                
                     [ASTNodeType.Multiplicative]= function()
-                        local  child1 = node:getChildren()[1]
+                        local  children = node:getChildren()
+                        local  child1 = children[1]
                         local  value1 = self:evaluateASTNode(child1, indent .. "\t")
-                        local  child2 = node:getChildren()[2]
+                        local  child2 = children[2]
                         local  value2 = self:evaluateASTNode(child2, indent .. "\t")
                         if node:getText() == "*" then 
                             result = value1 * value2
