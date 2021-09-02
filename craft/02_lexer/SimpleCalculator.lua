@@ -12,6 +12,7 @@ local SimpleLexer = require "SimpleLexer"
 local ASTNode = require "ASTNode"
 local ast_node_type_const = require "ASTNodeType"
 
+local LEFT_RECURSIVE = false
 ------------------------
 -- 打印输出AST的树状结构
 -- @param node
@@ -237,6 +238,15 @@ end
 --  @throws Exception
 -----------------------
 function SimpleCalculator:additive(tokens)
+    if LEFT_RECURSIVE then
+        return self:additive_left_recursive(tokens)
+    else
+        return self:additive_right_recursive(tokens)
+    end
+    
+end
+
+function SimpleCalculator:additive_right_recursive(tokens)
     local child1 = self:multiplicative(tokens)
     local node = child1
 
@@ -258,12 +268,50 @@ function SimpleCalculator:additive(tokens)
     return node
 end
 
+function SimpleCalculator:additive_left_recursive(tokens)
+    local child1 = self:multiplicative(tokens)
+    local node = child1
+
+   
+    if child1  then
+        while true do
+            local token = tokens:peek()
+            if token and (token:getType() == TOKEN_TYPE.Plus or token:getType() == TOKEN_TYPE.Minus) then
+                token = tokens:read()
+                local child2 = self:multiplicative(tokens)
+                if child2 then
+                    node = SimpleASTNode.new(ASTNodeType.Additive, token:getText())
+                    node:addChild(child1)
+                    node:addChild(child2)
+                    child1 = node
+                else 
+                    error("invalid additive expression, expecting the right part.")
+                end
+            else 
+                break    
+            end
+        end
+       
+    end
+    return node
+end
+
 -----------------------
 -- 语法解析：乘法表达式
 -- @return
 -- @throws Exception
 -----------------------
+
 function SimpleCalculator:multiplicative(tokens)
+    if LEFT_RECURSIVE then
+        return self:multiplicative_left_recursive(tokens)
+    else
+        return self:multiplicative_right_recursive(tokens)
+    end
+    
+end
+
+function SimpleCalculator:multiplicative_right_recursive(tokens)
     local  child1 = self:primary(tokens)
     local  node = child1
 
@@ -280,6 +328,34 @@ function SimpleCalculator:multiplicative(tokens)
                 error("invalid multiplicative expression, expecting the right part.")
             end
         end
+    end
+    return node
+end
+
+function SimpleCalculator:multiplicative_left_recursive(tokens)
+    local  child1 = self:primary(tokens)
+    local  node = child1
+
+   
+    if child1   then
+        while true do
+            local  token = tokens:peek()
+            if token and ( token:getType() == TOKEN_TYPE.Star or token:getType() == TOKEN_TYPE.Slash ) then
+                token = tokens:read()
+                local  child2 = self:primary(tokens)
+                if child2 then
+                    node =  SimpleASTNode.new(ASTNodeType.Multiplicative, token:getText())
+                    node:addChild(child1)
+                    node:addChild(child2)
+                    child1 = node
+                else
+                    error("invalid multiplicative expression, expecting the right part.")
+                end
+            else
+                break    
+            end
+        end
+       
     end
     return node
 end
@@ -319,7 +395,7 @@ end
 
 local function main()
     local calculator = SimpleCalculator.new()
-
+    print("左递归 LEFT_RECURSIVE:" , LEFT_RECURSIVE)
     --测试变量声明语句的解析
     local script = "int a = b+3;"
     print("解析变量声明语句: " , script)
@@ -345,6 +421,12 @@ local function main()
 
     script = "2+3+4";
     print("\n计算: " , script , "，结合性出现错误。")
+    calculator:evaluate(script)
+
+    LEFT_RECURSIVE=true
+    print("左递归 LEFT_RECURSIVE:" , LEFT_RECURSIVE)
+    script = "2+3+4+5";
+    print("\n计算: " , script , "，结合性没问题。")
     calculator:evaluate(script)
 end
 
