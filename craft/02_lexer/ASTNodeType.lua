@@ -22,18 +22,18 @@ end
 ASTNodeType = {
 
 
-    Programm                    =  add{  code = 1     ,     desc="程序入口，根节点"                         },            --程序入口，根节点
+    Programm                    =  add{  code = 1     , type="Programm"         ,    desc="程序入口，根节点"                         },            --程序入口，根节点
 
-    IntDeclaration              =  add{  code = 2     ,     desc="整型变量声明"                             },            --整型变量声明
-    ExpressionStmt              =  add{  code = 3     ,     desc="表达式语句，即表达式后面跟个分号"           },            --表达式语句，即表达式后面跟个分号
-    AssignmentStmt              =  add{  code = 4     ,     desc="赋值语句"                                 },            --赋值语句
+    IntDeclaration              =  add{  code = 2     , type="IntDeclaration"   ,    desc="整型变量声明"                             },            --整型变量声明
+    ExpressionStmt              =  add{  code = 3     , type="ExpressionStmt"   ,    desc="表达式语句，即表达式后面跟个分号"           },            --表达式语句，即表达式后面跟个分号
+    AssignmentStmt              =  add{  code = 4     , type="AssignmentStmt"   ,    desc="赋值语句"                                 },            --赋值语句
 
-    Primary                     =  add{  code = 5     ,     desc="基础表达式"                               },            --基础表达式
-    Multiplicative              =  add{  code = 6     ,     desc="乘法表达式"                               },            --乘法表达式
-    Additive                    =  add{  code = 7     ,     desc="加法表达式"                               },            --加法表达式
+    Primary                     =  add{  code = 5     , type="Primary"          ,    desc="基础表达式"                               },            --基础表达式
+    Multiplicative              =  add{  code = 6     , type="Multiplicative"   ,    desc="乘法表达式"                               },            --乘法表达式
+    Additive                    =  add{  code = 7     , type="Additive"         ,    desc="加法表达式"                               },            --加法表达式
 
-    Identifier                  =  add{  code = 8     ,     desc="标识符"                                   },            --标识符
-    IntLiteral                  =  add{  code = 9     ,     desc="整型字面量"                               },            --整型字面量
+    Identifier                  =  add{  code = 8     , type="Identifier"       ,    desc="标识符"                                   },            --标识符
+    IntLiteral                  =  add{  code = 9     , type="IntLiteral"       ,    desc="整型字面量"                               },            --整型字面量
 }
 
 

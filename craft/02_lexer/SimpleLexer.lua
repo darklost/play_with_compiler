@@ -50,21 +50,22 @@ local SimpleTokenReader = class("SimpleTokenReader", TokenReader)
 
 function SimpleTokenReader:ctor(tokens)
    self.tokens = tokens;
-   self.pos = 0;
+   self.pos = 1;
 end
 
 
 function SimpleTokenReader:read()
-       if self.pos < #self.tokens then
+       if self.pos <= #self.tokens then
+           local token = self.tokens[self.pos]
            self.pos = self.pos +1
         
-           return self.tokens[self.pos]
+           return token
        end
        return nil
 end
 
 function SimpleTokenReader:peek() 
-       if self.pos < #self.tokens then
+       if self.pos <= #self.tokens then
            return self.tokens[self.pos]
        end
        return nil
@@ -87,7 +88,8 @@ end
 
 
 
-
+-- 一个简单的手写的词法分析器。
+-- 能够为后面的简单计算器、简单脚本语言产生Token。
 local SimpleLexer= class("SimpleLexer")
 function SimpleLexer:ctor()
     --下面几个变量是在解析过程中用到的临时变量,如果要优化的话，可以塞到方法里隐藏起来
@@ -362,3 +364,5 @@ local function main(  )
     print("------------------------")
 end
 main()
+
+return SimpleLexer
