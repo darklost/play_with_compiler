@@ -335,11 +335,11 @@ end
 -- @param node
 -- @param indent 缩进字符，由tab组成，每一级多一个tab
 ------------------------
-local function dumpAST( node,  indent)
+function SimpleParser.dumpAST( node,  indent)
    
     print(indent , ast_node_type_const[node:getType()].type ,  node:getText())
     for i,child in ipairs(node:getChildren()) do
-         dumpAST(child, indent.."\t")
+         SimpleParser.dumpAST(child, indent.."\t")
     end
   
  end
@@ -355,7 +355,7 @@ local function main()
         script = "int age = 45+2; age= 20; age+10*2;"
         print("解析：",script)
         tree = parser:parse(script)
-        dumpAST(tree, "")
+        SimpleParser.dumpAST(tree, "")
     end)
     
     if not ok then
@@ -363,14 +363,14 @@ local function main()
     end
    
 
-    
+
 
     --测试异常语法
     local ok,err=pcall(function ()
         script = "2+3+;"
         print("解析：",script)
         tree = parser:parse(script)
-        dumpAST(tree, "")
+        SimpleParser.dumpAST(tree, "")
     end)
     
     if not ok then
@@ -384,7 +384,7 @@ local function main()
         script = "2+3*;";
         print("解析：",script)
         tree = parser:parse(script)
-        dumpAST(tree, "")
+        SimpleParser.dumpAST(tree, "")
     end)
     
     if not ok then

@@ -864,3 +864,26 @@ function string.formatnumberthousands(num)
     end
     return formatted
 end
+
+--[[
+    @desc: 检查是否 str 是以 str_start 字符开头
+    author:{author}
+    time:2020-04-11 15:07:48
+    --@str:目标字符串
+	--@str_start: 检查字符串
+    @return:
+]]
+function string.start_with(str,str_start)
+  return string.sub(str,1,string.len(str_start))==str_start
+end
+--[[
+  @desc: 检查是否 str 是以 str_end 字符结尾
+  author:{author}
+  time:2020-04-11 15:07:48
+  --@str:目标字符串
+--@str_end: 检查字符串
+  @return:
+]]
+function string.end_with(str,str_end)
+  return str_end=='' or string.sub(str,-string.len(str_end))==str_end
+end

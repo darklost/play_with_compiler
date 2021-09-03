@@ -11,6 +11,7 @@ framework = framework or {}
 framework.PACKAGE_NAME = string.sub(CURRENT_MODULE_NAME, 1, -6)
 require(framework.PACKAGE_NAME .. ".debug")
 require(framework.PACKAGE_NAME .. ".functions")
+require(framework.PACKAGE_NAME .. ".global")
 
 printInfo("")
 printInfo("# DEBUG                        = "..DEBUG)
