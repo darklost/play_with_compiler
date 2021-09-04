@@ -2,7 +2,7 @@
     "editor.snippetSuggestions": "bottom",
     "luaide.scriptRoots": [
         "${workspaceRoot}/craft",
-        "${workspaceRoot}/craft/02_lexer",
+        "${workspaceRoot}/craft/lexer",
     ],
     "luaide.openUriConfig": [
 

@@ -8,7 +8,7 @@
 -- 所支持的语法，请参见SimpleParser.lua
 --
 -- 运行脚本：
--- 在命令行下，键入：lua -e "package.path='craft/02_lexer/?.lua;craft/?.lua;'" .\craft\02_lexer\SimpleScript.lua -v
+-- 在命令行下，键入：lua -e "package.path='craft/lexer/?.lua;craft/?.lua;'" .\craft\lexer\SimpleScript.lua -v
 -- 则进入一个REPL界面。你可以依次敲入命令。比如：
 -- > 2+3;
 -- > int age = 10;
@@ -151,7 +151,7 @@ end
 
 
 --[[
-    @desc: lua -e "package.path='craft/02_lexer/?.lua;craft/?.lua;'" .\craft\02_lexer\SimpleScript.lua
+    @desc: lua -e "package.path='craft/lexer/?.lua;craft/?.lua;'" .\craft\lexer\SimpleScript.lua
     author:darklost
     time:2021-09-04 02:25:47
     @return:
