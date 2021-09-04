@@ -168,12 +168,12 @@ local function main()
  
 
     local scriptText = ""
-    print(">");   --提示符
+    io.write("\n>")   --提示符
 
     while true do
         local line  = string.trim(io.read("*l"))
         if line =="exit();" then
-            print("good bye!")
+            io.write("good bye!")
             break
         end
         local ok ,err = pcall(function ()
@@ -187,15 +187,15 @@ local function main()
 
                 script:evaluate(tree, "")
 
-                print(">")  --提示符
+                io.write("\n>")  --提示符
 
                 scriptText = ""
             end
         end)
         
         if not ok then
-            print(err)
-            print(">")   --提示符
+            io.write(err)
+            io.write("\n>")   --提示符
             scriptText = ""
         end
     end
