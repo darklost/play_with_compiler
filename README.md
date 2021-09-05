@@ -43,9 +43,9 @@ craft : 第2-5讲的资料。手工实现的简单的词法分析器、语法分
 
 
     # 生成
-    cd 
+    cd .\antlrtest\
     ..\antlr.bat PlayScript.g4 -visitor
-
+    cd ..
     javac -encoding  UTF-8 .\antlrtest\*.java
 
     java antlrtest.PlayScript
