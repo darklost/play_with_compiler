@@ -28,5 +28,15 @@
     "luaide.ctorNames": [
         "ctor"
     ],
-    "luaide.automaticDownloadingDebugFile": false
+    "luaide.automaticDownloadingDebugFile": false,
+    "java.project.outputPath": "playscript-java\\out",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "playscript-java\\lib\\antlr-4.7.2-complete.jar",
+        "playscript-java\\lib\\asm-7.2.jar",
+        "playscript-java\\lib\\asm-analysis-7.2.jar",
+        "playscript-java\\lib\\asm-commons-7.2.jar",
+        "playscript-java\\lib\\asm-tree-7.2.jar",
+        "playscript-java\\lib\\asm-util-7.2.jar"
+    ]
 }
