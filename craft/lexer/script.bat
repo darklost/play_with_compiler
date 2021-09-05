@@ -1,1 +1,0 @@
- lua -e "package.path='craft/lexer/?.lua;craft/?.lua;'" .\craft\lexer\SimpleScript.lua %*

@@ -1,0 +1,1 @@
+ lua -e "package.path='craft/?.lua;'" .\craft\SimpleScript.lua %*
