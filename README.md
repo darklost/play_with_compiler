@@ -43,7 +43,8 @@ craft : 第2-5讲的资料。手工实现的简单的词法分析器、语法分
 
 
     # 生成
-    .\antlr.bat .\antlrtest\PlayScript.g4 -visitor
+    cd 
+    ..\antlr.bat PlayScript.g4 -visitor
 
     javac -encoding  UTF-8 .\antlrtest\*.java
 
