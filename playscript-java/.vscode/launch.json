@@ -15,7 +15,6 @@
             "name": "Launch PlayScript",
             "request": "launch",
             "mainClass": "play.PlayScript",
-            "projectName": "playscript-java_c68c1c17",
             "args": "${input:PlayParams}"
         }
     ],
