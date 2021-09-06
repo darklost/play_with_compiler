@@ -1,3 +1,5 @@
 #输出目录
-out
+/out/*
+!/out/.gitkeep
+
 
