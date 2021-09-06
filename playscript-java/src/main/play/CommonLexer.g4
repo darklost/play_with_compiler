@@ -38,7 +38,7 @@
 
 lexer grammar CommonLexer;
 
-// Keywords
+// Keywords 关键字
 
 ABSTRACT:           'abstract';
 ASSERT:             'assert';
@@ -95,7 +95,7 @@ FUNCTION:           'function';
 
 STRING:             'string';   //added on 2019-08-29 by Richard Gong
 
-// Literals
+// Literals 字面量
 
 DECIMAL_LITERAL:    ('0' | [1-9] (Digits? | '_'+ Digits)) [lL]?;
 HEX_LITERAL:        '0' [xX] [0-9a-fA-F] ([0-9a-fA-F_]* [0-9a-fA-F])? [lL]?;
@@ -118,7 +118,7 @@ STRING_LITERAL:     '"' (~["\\\r\n] | EscapeSequence)* '"';
 
 NULL_LITERAL:       'null';
 
-// Separators
+// Separators 分隔符
 
 LPAREN:             '(';
 RPAREN:             ')';
@@ -130,7 +130,7 @@ SEMI:               ';';
 COMMA:              ',';
 DOT:                '.';
 
-// Operators
+// Operators 操作符
 
 ASSIGN:             '=';
 GT:                 '>';
@@ -168,56 +168,56 @@ LSHIFT_ASSIGN:      '<<=';
 RSHIFT_ASSIGN:      '>>=';
 URSHIFT_ASSIGN:     '>>>=';
 
-// Java 8 tokens
+// Java 8 tokens Java 8 特殊tokens
 
 ARROW:              '->';
 COLONCOLON:         '::';
 
-// Additional symbols not defined in the lexical specification
+// Additional symbols not defined in the lexical specification 词法规范中未定义的附加符号
 
 AT:                 '@';
 ELLIPSIS:           '...';
 
-// Whitespace and comments
+// Whitespace and comments 空格和注释
 
 WS:                 [ \t\r\n\u000C]+ -> channel(HIDDEN);
 COMMENT:            '/*' .*? '*/'    -> channel(HIDDEN);
 LINE_COMMENT:       '//' ~[\r\n]*    -> channel(HIDDEN);
 
-// Identifiers
+// Identifiers 标识符(变量名)
 
 IDENTIFIER:         Letter LetterOrDigit*;
 
-// Fragment rules
+// Fragment rules 代码片段规则
 
-fragment ExponentPart
+fragment ExponentPart //科学计数法片段 在科学计数法中，为了使公式简便，可以用带“E”的格式表示。例如1.03乘10的8次方，可简写为“1.03E+08”的形式
     : [eE] [+-]? Digits
     ;
 
-fragment EscapeSequence
+fragment EscapeSequence //转义片段
     : '\\' [btnfr"'\\]
     | '\\' ([0-3]? [0-7])? [0-7]
     | '\\' 'u'+ HexDigit HexDigit HexDigit HexDigit
     ;
 
-fragment HexDigits
+fragment HexDigits //十六进制数
     : HexDigit ((HexDigit | '_')* HexDigit)?
     ;
 
-fragment HexDigit
+fragment HexDigit //单个十六进制数
     : [0-9a-fA-F]
     ;
 
-fragment Digits
+fragment Digits //十进制数字
     : [0-9] ([0-9_]* [0-9])?
     ;
 
-fragment LetterOrDigit
+fragment LetterOrDigit //字母或者数字
     : Letter
     | [0-9]
     ;
 
-fragment Letter
+fragment Letter //字母
     : [a-zA-Z$_] // these are the "java letters" below 0x7F
     | ~[\u0000-\u007F\uD800-\uDBFF] // covers all characters above 0x7F which are not a surrogate
     | [\uD800-\uDBFF] [\uDC00-\uDFFF] // covers UTF-16 surrogate pairs encodings for U+10000 to U+10FFFF
