@@ -1,3 +1,10 @@
 {
-    "java.project.outputPath": "out"
+    "java.project.outputPath": "out",
+    "antlr4.generation": {
+        "outputDir": "${workspaceRoot}/out",
+        "mode": "none",
+        "language": "Java",
+        "listeners": true,
+        "visitors": true
+    },
 }
